@@ -119,11 +119,24 @@ function setupFloatingMemoryButton() {
 
   const update = () => {
     const isMobile = window.matchMedia("(max-width: 620px)").matches;
-    const protectedZone = [...document.querySelectorAll("#unlocked, #planuri, .memory-form")].some((element) => {
+    const protectedZone = [...document.querySelectorAll("#unlocked, #planuri, .memory-form, .modal-backdrop:not([hidden])")].some((element) => {
       const rect = element.getBoundingClientRect();
       return rect.top < window.innerHeight && rect.bottom > 0;
     });
-    const shouldShow = !isMobile || (window.scrollY > 520 && !protectedZone);
+    const mobileControlZone = {
+      left: window.innerWidth - 92,
+      right: window.innerWidth,
+      top: window.innerHeight - 168,
+      bottom: window.innerHeight,
+    };
+    const mobileOverlap = isMobile && [...document.querySelectorAll(".photo-card, .memory-screenshot-card, .joke-card, .quote-grid blockquote, .reason-list li, .care-list li, .checklist label, .unlock-grid label")].some((element) => {
+      const rect = element.getBoundingClientRect();
+      return rect.left < mobileControlZone.right
+        && rect.right > mobileControlZone.left
+        && rect.top < mobileControlZone.bottom
+        && rect.bottom > mobileControlZone.top;
+    });
+    const shouldShow = !isMobile || (window.scrollY > 520 && !protectedZone && !mobileOverlap);
     floatingControls.forEach((control) => {
       control.classList.toggle("is-visible", shouldShow);
     });

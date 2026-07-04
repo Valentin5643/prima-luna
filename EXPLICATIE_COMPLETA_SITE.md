@@ -328,7 +328,7 @@ Carduri:
 - Text alternativ: `Selfie foarte serios și amuzant`
 
 - `Moment de film`
-- `Aici poza a decis singură că vrea să fie cinematică.`
+- `A ieșit chiar bine.`
 - Imagine: `imagini/WhatsApp Image 2026-07-02 at 21.44.04.jpeg`
 - Text alternativ: `Poză cu atmosferă de film`
 
@@ -513,7 +513,7 @@ Text vizibil:
 
 ### Butoane plutitoare
 
-Butoanele plutitoare sunt vizibile direct pe desktop. Pe mobil apar după scroll, sunt afișate ca butoane compacte și se ascund în secțiunile cu checklist (`Things unlocked` și `Planuri`) ca să nu acopere opțiunile bifabile.
+Butoanele plutitoare sunt vizibile direct pe desktop. Pe mobil apar după scroll, sunt afișate ca butoane compacte și se ascund când ar acoperi carduri, liste, checklist-uri, secțiunea de planuri sau un modal deschis.
 
 Text vizibil:
 
@@ -632,12 +632,12 @@ Carduri:
 - Text alternativ: `Selfie foarte serios și amuzant`
 
 - `Moment de film`
-- `Aici poza a decis singură că vrea să fie cinematică.`
+- `A ieșit chiar bine.`
 - Imagine: `imagini/WhatsApp Image 2026-07-02 at 21.44.04.jpeg`
 - Text alternativ: `Poză cu atmosferă de film`
 
-- `Ochelarii`
-- `Moment verificat și aprobat de soare.`
+- `Al doilea date`
+- `Încă încercam să par normal. Nu știu cât mi-a ieșit, dar măcar poza a rămas.`
 - Imagine: `imagini/WhatsApp Image 2026-07-02 at 21.44.03.jpeg`
 - Text alternativ: `Poză de la o ieșire cu ochelarii`
 
