@@ -9,12 +9,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const enterButton = document.querySelector("[data-enter-site]");
   const secretModal = document.querySelector("[data-secret-modal]");
   const memoryModal = document.querySelector("[data-memory-modal]");
-  const isPublicMode = false;
+  const isPublicMode = setupPublicMode();
   let lastFocused = null;
 
   const revealSite = () => {
     loading.hidden = true;
     shell.hidden = false;
+    document.querySelector(".nav-links")?.scrollTo({ left: 0 });
+    window.dispatchEvent(new Event("resize"));
+    window.dispatchEvent(new Event("scroll"));
     const focusTarget = isPublicMode
       ? document.querySelector('.hero-actions a[href="#album"]')
       : document.querySelector('.hero-actions a[href="#prima-luna"]');
@@ -44,6 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setupChecklist();
   setupMemoryForm();
   setupFloatingMemoryButton();
+  setupActiveNavigation();
 
   document.querySelector("[data-open-secret]").addEventListener("click", () => {
     openModal(secretModal);
@@ -84,6 +88,44 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+function setupActiveNavigation() {
+  const links = [...document.querySelectorAll("[data-nav-link]")];
+  if (!links.length) return;
+
+  const targets = links
+    .map((link) => document.querySelector(link.getAttribute("href")))
+    .filter(Boolean);
+
+  const setActive = (id) => {
+    links.forEach((link) => {
+      link.classList.toggle("is-active", link.getAttribute("href") === `#${id}`);
+    });
+  };
+
+  setActive("acasa");
+
+  let ticking = false;
+  const updateFromScroll = () => {
+    ticking = false;
+    const position = window.scrollY + 180;
+    const current = targets.reduce((active, target) => (
+      target.offsetTop <= position ? target : active
+    ), targets[0]);
+    if (current?.id) setActive(current.id);
+  };
+
+  const queueUpdate = () => {
+    if (ticking) return;
+    ticking = true;
+    window.requestAnimationFrame(updateFromScroll);
+  };
+
+  updateFromScroll();
+  window.addEventListener("scroll", queueUpdate, { passive: true });
+  window.addEventListener("resize", queueUpdate);
+
+}
+
 function setupPublicMode() {
   const isPublicMode = new URLSearchParams(window.location.search).get("public") === "1";
   if (!isPublicMode) return false;
@@ -119,7 +161,7 @@ function setupFloatingMemoryButton() {
 
   const update = () => {
     const isMobile = window.matchMedia("(max-width: 620px)").matches;
-    const protectedZone = [...document.querySelectorAll("#unlocked, #planuri, .memory-form, .modal-backdrop:not([hidden])")].some((element) => {
+    const protectedZone = [...document.querySelectorAll("#timeline, #unlocked, #planuri, .memory-form, .modal-backdrop:not([hidden])")].some((element) => {
       const rect = element.getBoundingClientRect();
       return rect.top < window.innerHeight && rect.bottom > 0;
     });
@@ -129,14 +171,14 @@ function setupFloatingMemoryButton() {
       top: window.innerHeight - 168,
       bottom: window.innerHeight,
     };
-    const mobileOverlap = isMobile && [...document.querySelectorAll(".photo-card, .memory-screenshot-card, .joke-card, .quote-grid blockquote, .reason-list li, .care-list li, .checklist label, .unlock-grid label")].some((element) => {
+    const mobileOverlap = isMobile && [...document.querySelectorAll(".chapter, .soft-note, .photo-card, .memory-screenshot-card, .joke-card, .quote-grid blockquote, .reason-list li, .care-list li, .checklist label, .unlock-grid label")].some((element) => {
       const rect = element.getBoundingClientRect();
       return rect.left < mobileControlZone.right
         && rect.right > mobileControlZone.left
         && rect.top < mobileControlZone.bottom
         && rect.bottom > mobileControlZone.top;
     });
-    const shouldShow = !isMobile || (window.scrollY > 520 && !protectedZone && !mobileOverlap);
+    const shouldShow = window.scrollY > 520 && (!isMobile || (!protectedZone && !mobileOverlap));
     floatingControls.forEach((control) => {
       control.classList.toggle("is-visible", shouldShow);
     });

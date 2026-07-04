@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Un site mic pentru prima lună a lui Vali și Daria.">
     <title>Vali & Daria - puțin câte puțin</title>
-    <link rel="stylesheet" href="styles.css?v=20260704-mobile-photo">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;650;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=20260704-scrapbook-redesign">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
     <script src="script.js?v=20260704-mobile" defer></script>
   </head>
@@ -25,18 +28,19 @@
         <nav class="top-nav" aria-label="Navigație principală">
           <a class="brand" href="#acasa">V &amp; D</a>
           <div class="nav-links">
-            <a href="#acasa">Acasă</a>
-            <a href="#prima-luna">Prima lună</a>
-            <a href="#memorii">Memorii</a>
-            <a href="#album">Album</a>
-            <a href="#inside-jokes">Glume</a>
-            <a href="#planuri">Planuri</a>
+            <a href="#acasa" data-nav-link>Acasă</a>
+            <a href="#prima-luna" data-nav-link>Prima lună</a>
+            <a href="#memorii" data-nav-link>Memorii</a>
+            <a href="#album" data-nav-link>Album</a>
+            <a href="#inside-jokes" data-nav-link>Glume</a>
+            <a href="#planuri" data-nav-link>Planuri</a>
           </div>
         </nav>
 
         <section class="hero hero-private" aria-labelledby="hero-title">
           <div class="hero-copy">
             <p class="eyebrow">Vali &amp; Daria - puțin câte puțin</p>
+            <span class="title-heart" aria-hidden="true">♡</span>
             <h1 id="hero-title">Bine ai venit acasă.</h1>
             <p class="hero-subtitle">Prima lună. Restul îl scriem noi.</p>
             <p>
@@ -49,6 +53,8 @@
           </div>
           <figure class="hero-photo">
             <img src="imagini/WhatsApp Image 2026-07-02 at 21.44.04 (4).jpeg" alt="Vali și Daria într-un moment liniștit împreună">
+            <span class="paper-piece paper-piece-rose" aria-hidden="true"></span>
+            <span class="paper-piece paper-piece-green" aria-hidden="true"></span>
           </figure>
         </section>
       </header>
@@ -76,7 +82,6 @@
               <span class="chapter-number">02</span>
               <h3>Al doilea date</h3>
               <p>Aici încă încercam să par normal. Nu știu cât mi-a ieșit, dar măcar poza a rămas.</p>
-              <button class="badge-button" type="button" data-burst>Moment salvat ✅</button>
             </div>
             <img loading="lazy" src="imagini/WhatsApp Image 2026-07-02 at 21.44.03.jpeg" alt="Poză de la al doilea date cu ochelarii">
           </article>
@@ -84,7 +89,7 @@
           <article class="chapter chapter-wide">
             <div class="chapter-copy">
               <span class="chapter-number">03</span>
-              <h3>Parcul - când suntem fericiți și când suntem supărați</h3>
+              <h3>Parcul</h3>
               <h4>Înainte și după invazia foișorului</h4>
               <p>Aici eram liniștiți. Parcul, noi doi și impresia falsă că totul merge conform planului.</p>
               <p class="soft-note">Aici încă eram fericiți. După a apărut familia aia și s-a dus tot planul. Dar măcar eram cu tine.</p>
