@@ -7,23 +7,19 @@ Acest document descrie complet site-ul din `B:\UnSiteMic`, pe baza fișierelor a
 Site-ul are trei intrări importante:
 
 - `index.html` din rădăcina proiectului este doar o pagină de redirecționare către varianta pentru Daria.
-- `sites/daria/index.html` este site-ul principal, personal, pentru Daria.
-- `sites/public/index.html` este varianta publică, mai scurtă și mai curată.
+- `index.html` este site-ul principal, personal, pentru Daria, publicat la `https://valentin5643.github.io/prima-luna/`.
+- Varianta publică, mai scurtă și mai curată, este publicată separat în repo-ul `vali-daria`, la `https://valentin5643.github.io/vali-daria/`.
 
 Fiecare variantă are propriile fișiere:
 
-- `sites/daria/index.html`
-- `sites/daria/styles.css`
-- `sites/daria/script.js`
-- `sites/daria/imagini/`
-- `sites/public/index.html`
-- `sites/public/styles.css`
-- `sites/public/script.js`
-- `sites/public/imagini/`
+- `index.html`
+- `styles.css`
+- `script.js`
+- `imagini/`
 
 ## Root redirect
 
-Fișierul `B:\UnSiteMic\index.html` nu este site-ul propriu-zis. El trimite automat către `sites/daria/`.
+Fișierul `B:\UnSiteMic\index.html` este site-ul propriu-zis pentru Daria. Nu mai există redirect către o variantă din subfolder.
 
 Text vizibil în root:
 
@@ -844,6 +840,6 @@ Aceste date rămân în browserul în care au fost create. Nu sunt trimise pe se
 
 ## Rezumat funcțional
 
-Site-ul este static. Conținutul principal este în HTML, aspectul este în CSS, iar interacțiunile sunt în JavaScript. Varianta pentru Daria este completă și personală. Varianta publică este redusă, fără detalii private. Root-ul doar redirecționează către varianta Daria.
+Site-ul este static. Conținutul principal este în HTML, aspectul este în CSS, iar interacțiunile sunt în JavaScript. Varianta pentru Daria este completă și personală și este servită direct din root-ul repo-ului `prima-luna`. Varianta publică este redusă, fără detalii private, și este servită direct din root-ul repo-ului `vali-daria`.
 
 Site-ul nu are build step, framework sau backend. Funcționează direct din fișiere locale sau printr-un server static simplu.
