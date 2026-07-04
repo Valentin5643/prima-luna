@@ -235,7 +235,7 @@ Text vizibil:
 - `Ce am simțit atunci`
 - `Mi-am dat seama că vezi relația asta cam cum o văd și eu.`
 - `Ce înseamnă acum`
-- `Cred în noi. Da, știu. O zic și eu acum. ❤️`
+- `Cred că de aici am început și eu să cred mai tare.`
 
 Imagine:
 
